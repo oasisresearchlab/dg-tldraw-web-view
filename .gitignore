@@ -1,0 +1,17 @@
+node_modules/
+.env
+.env.local
+.env.*.local
+
+# Next.js
+web/.next/
+web/out/
+web/next-env.d.ts
+*.tsbuildinfo
+
+# Cloudflare
+sync-worker/.wrangler/
+sync-worker/.dev.vars
+
+.DS_Store
+npm-debug.log*

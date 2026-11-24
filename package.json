@@ -1,0 +1,19 @@
+{
+  "name": "dg-tldraw-web-view",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Standalone tldraw web view for discourse graphs: import nodes as JSON-LD, lay them out on a real-time collaborative canvas, open them in a sidebar.",
+  "license": "MIT",
+  "engines": { "node": ">=22 <23" },
+  "workspaces": ["shared", "web", "sync-worker"],
+  "scripts": {
+    "dev": "npm run dev -w web",
+    "build": "npm run build -w web",
+    "lint": "npm run lint -w web",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w web && npm run typecheck -w sync-worker",
+    "worker:dev": "npm run dev -w sync-worker",
+    "worker:deploy": "npm run deploy -w sync-worker",
+    "export:lives": "node tools/export-lives.mjs",
+    "import": "node tools/import-jsonld.mjs"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "dct": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "sioc": "http://rdfs.org/sioc/ns#",
+    "dgb": "https://discoursegraphs.com/schema/dg_base#",
+    "dg": "https://discoursegraphs.com/schema/dg_core#",
+    "dgv": "https://github.com/oasisresearchlab/dg-tldraw-web-view/schema#",
+
+    "nodeSchema": "dgb:NodeSchema",
+    "relationDef": "dgb:RelationDef",
+    "relationInstance": "dgb:RelationInstance",
+
+    "title": "dct:title",
+    "label": "rdfs:label",
+    "content": "sioc:content",
+    "created": "dct:date",
+    "modified": "dct:modified",
+    "creator": "dct:creator",
+
+    "subClassOf": { "@id": "rdfs:subClassOf", "@type": "@id" },
+    "subPropertyOf": { "@id": "rdfs:subPropertyOf", "@type": "@id" },
+    "inverseOf": { "@id": "owl:inverseOf", "@type": "@id" },
+    "domain": { "@id": "rdfs:domain", "@type": "@id" },
+    "range": { "@id": "rdfs:range", "@type": "@id" },
+
+    "predicate": { "@id": "rdf:predicate", "@type": "@id" },
+    "source": { "@id": "dgb:source", "@type": "@id" },
+    "destination": { "@id": "dgb:destination", "@type": "@id" },
+
+    "prefix": "dgv:prefix",
+    "color": "dgv:color",
+    "status": "dgv:status",
+    "tags": { "@id": "dgv:tag", "@container": "@set" },
+    "extras": { "@id": "dgv:extras", "@type": "@json" }
+  }
+}

@@ -1,0 +1,28 @@
+# Cloudflare Worker that hosts tldraw sync rooms for the discourse graph web view.
+# Based on tldraw's sync-cloudflare template (MIT). One Durable Object per canvas room;
+# room state lives in the DO's SQLite storage, uploaded assets go to R2.
+name = "dg-tldraw-sync"
+main = "worker/worker.ts"
+compatibility_date = "2025-05-08"
+compatibility_flags = ["nodejs_compat"]
+upload_source_maps = true
+preview_urls = true
+
+[observability]
+enabled = true
+
+[vars]
+# Comma-separated list of browser origins allowed to connect. Add your deployed web app.
+ALLOWED_ORIGINS = "http://localhost:3000"
+
+[durable_objects]
+bindings = [{ name = "TLDRAW_DURABLE_OBJECT", class_name = "TldrawDurableObject" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["TldrawDurableObject"]
+
+[[r2_buckets]]
+binding = "TLDRAW_BUCKET"
+bucket_name = "dg-tldraw-assets"
+preview_bucket_name = "dg-tldraw-assets-preview"

@@ -1,0 +1,23 @@
+{
+  "name": "@dg/sync-worker",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "types": "wrangler types",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@dg/shared": "*",
+    "@tldraw/sync-core": "5.6.2",
+    "@tldraw/tlschema": "5.6.2",
+    "cloudflare-workers-unfurl": "^0.0.9",
+    "itty-router": "^5.0.18"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "wrangler": "^4.75.0"
+  }
+}
