@@ -13,7 +13,7 @@ enabled = true
 
 [vars]
 # Comma-separated list of browser origins allowed to connect. Add your deployed web app.
-ALLOWED_ORIGINS = "http://localhost:3000"
+ALLOWED_ORIGINS = "http://localhost:3000,https://dg-tldraw-web-view.vercel.app"
 
 [durable_objects]
 bindings = [{ name = "TLDRAW_DURABLE_OBJECT", class_name = "TldrawDurableObject" }]

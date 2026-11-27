@@ -18,6 +18,12 @@ const components: TLComponents = {
 };
 
 const SYNC_URL = process.env.NEXT_PUBLIC_SYNC_URL?.replace(/\/+$/, "") || null;
+/**
+ * tldraw requires a license key on any host other than localhost; without one it hides the editor
+ * after a few seconds. The free "with watermark" key from tldraw.dev is enough. Undefined keeps
+ * local development working.
+ */
+const TLDRAW_LICENSE_KEY = process.env.NEXT_PUBLIC_TLDRAW_LICENSE_KEY || undefined;
 
 export default function Canvas({ roomId }: { roomId: string }) {
   useEffect(() => rememberRoom(roomId), [roomId]);
@@ -65,6 +71,7 @@ function Editor({ onMount, ...props }: { store?: TLStoreWithStatus; persistenceK
   return (
     <Tldraw
       {...props}
+      licenseKey={TLDRAW_LICENSE_KEY}
       shapeUtils={customShapeUtils}
       components={components}
       options={{ maxPages: 1 }}

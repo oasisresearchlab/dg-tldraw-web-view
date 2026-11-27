@@ -48,6 +48,22 @@ npm run dev
 
 Open the same `/c/<room>` link in two browsers.
 
+## Deploy it
+
+1. **Sync worker (Cloudflare).** Follow `sync-worker/README.md`: `wrangler login`, enable R2 in the
+   dashboard, create the two buckets, `npm run worker:deploy`. Note the printed worker URL.
+2. **Web app (Vercel).** Import the repo, set **Root Directory** to `web`, and add two environment
+   variables: `NEXT_PUBLIC_SYNC_URL` (the worker URL) and `NEXT_PUBLIC_TLDRAW_LICENSE_KEY`
+   (see below). Both are build-time, so changing them needs a redeploy.
+3. **Allowlist the web origin.** Add the Vercel origin to `ALLOWED_ORIGINS` in
+   `sync-worker/wrangler.toml` and deploy the worker again.
+
+**tldraw license key.** The tldraw SDK runs without a key on localhost only. On any other host it
+hides the editor after a few seconds unless a key is set (`data-testid="tl-license-expired"` in the
+DOM is the tell). Research and side projects qualify for the free hobby license, which keeps the
+"made with tldraw" watermark: apply at https://tldraw.dev/get-a-license/hobby with the deployed
+domain, then put the key in `NEXT_PUBLIC_TLDRAW_LICENSE_KEY`.
+
 ## Bring your own graph
 
 1. Produce JSON-LD in the format described in [`schema/README.md`](./schema/README.md).
@@ -71,5 +87,5 @@ import of the LIVES vault, sidebar, search palette, local fallback. Not yet done
 ## License
 
 MIT. The sync worker is adapted from tldraw's MIT-licensed template; the node shape is a
-port of the Apache-2.0 Discourse Graph plugin canvas. The tldraw SDK shows a "made with
-tldraw" watermark unless you hold a tldraw license.
+port of the Apache-2.0 Discourse Graph plugin canvas. The tldraw SDK itself needs a license
+key on deployed hosts; the free hobby tier shows a "made with tldraw" watermark (see Deploy it).
