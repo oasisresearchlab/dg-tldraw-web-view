@@ -53,7 +53,7 @@ Open the same `/c/<room>` link in two browsers.
 1. **Sync worker (Cloudflare).** Follow `sync-worker/README.md`: `wrangler login`, enable R2 in the
    dashboard, create the two buckets, `npm run worker:deploy`. Note the printed worker URL.
 2. **Web app (Vercel).** Import the repo, set **Root Directory** to `web`, and add two environment
-   variables: `NEXT_PUBLIC_SYNC_URL` (the worker URL) and `NEXT_PUBLIC_TLDRAW_LICENSE_KEY`
+   variables: `NEXT_PUBLIC_SYNC_URL` (the worker URL) and `TLDRAW_LICENSE_KEY`
    (see below). Both are build-time, so changing them needs a redeploy.
 3. **Allowlist the web origin.** Add the Vercel origin to `ALLOWED_ORIGINS` in
    `sync-worker/wrangler.toml` and deploy the worker again.
@@ -62,7 +62,8 @@ Open the same `/c/<room>` link in two browsers.
 hides the editor after a few seconds unless a key is set (`data-testid="tl-license-expired"` in the
 DOM is the tell). Research and side projects qualify for the free hobby license, which keeps the
 "made with tldraw" watermark: apply at https://tldraw.dev/get-a-license/hobby with the deployed
-domain, then put the key in `NEXT_PUBLIC_TLDRAW_LICENSE_KEY`.
+domain, then put the key in `TLDRAW_LICENSE_KEY` (or `NEXT_PUBLIC_TLDRAW_LICENSE_KEY`; the
+plain name avoids a Vercel dashboard warning about public prefixes).
 
 ## Bring your own graph
 
